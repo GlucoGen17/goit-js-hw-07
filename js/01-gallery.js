@@ -6,15 +6,15 @@ console.log(galleryItems);
 const gallery = document.querySelector('.gallery');
 
 
-const imagesMarkup = createItemsMarkup(galleryItems);
+const galleryMarkup = createItemsMarkup(galleryItems);
 
-gallery.insertAdjacentHTML("beforeend", imagesMarkup);
+gallery.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function createItemsMarkup(galleryItems) {
     return galleryItems
       .map(({ preview, original, description }) => {
         return `<div class="gallery__item">
-        <a class="gallery__link" href="${original.value}">
+        <a class="gallery__link" href="${original}">
           <img
             class="gallery__image"
             src="${preview}"
