@@ -12,39 +12,20 @@ gallery.insertAdjacentHTML("beforeend", galleryMarkup);
 function createItemsMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
-      return `<div class="gallery__item">
+      return `
         <a class="gallery__link" href="${original}">
           <img
             class="gallery__image"
             src="${preview}"
-            data-source="${original}"
             alt="${description}"
           />
-        </a>
-      </div>`;
+        </a>`;
     })
     .join("");
 }
 
-gallery.addEventListener("click", onClickEvent);
-
-function onClickEvent(event) {
-  event.preventDefault();
-
-  if (!event.target.classList.contains("gallery__image")) {
-    return;
-  }
-
-  gallery.addEventListener("keydown", onEsc);
-
-  const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">`);
-
-  instance.show();
-
-  function onEsc(event) {
-    if (event.code === "Escape") {
-      instance.close();
-    }
-  }
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: "alt",
+    captionDelay: 250,
+    captionPosition: 'bottom',
+  });
