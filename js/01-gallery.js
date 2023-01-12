@@ -10,7 +10,7 @@ const imagesMarkup = createItemsMarkup(galleryItems);
 
 gallery.insertAdjacentHTML("beforeend", imagesMarkup);
 
-function createItemsMarkup(item) {
+function createItemsMarkup(galleryItems) {
     return galleryItems
       .map(({ preview, original, description }) => {
         return `<div class="gallery__item">
@@ -27,6 +27,7 @@ function createItemsMarkup(item) {
       .join("");
   }
 
+  galleryColection.addEventListener('click', onClickItem);
 
 //   function createGalleryMarkup(galleryItems) {
 //     return galleryItems
